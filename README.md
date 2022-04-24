@@ -1,29 +1,20 @@
-# README #
+# Simple Finance Test #
 
-This README would normally document whatever steps are necessary to get your application up and running.
 
-### What is this repository for? ###
+### Installation Guide and run the following command
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+* setup virtualenv by this command virtualenv -p python3.9 venv
+* pip3 install -r requirements.txt
+* setup redis server
 
-### How do I get set up? ###
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+### Run celery worker and celery flower on the other tabs
+* celery -A app worker --loglevel=INFO
+* celery -A app flower  --address=0.0.0.0 --port=5566
 
-### Contribution guidelines ###
 
-* Writing tests
-* Code review
-* Other guidelines
+### To run the test
 
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+* Load initial data by this command   -```python3 manage.py load_initials```
+* Random Revenue by this command   -```python3 manage.py random_revenue```
+* Slow Iteration by this command   -```python3 manage.py slow_iteration```

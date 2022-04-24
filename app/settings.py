@@ -1,28 +1,5 @@
 from pathlib import Path
-
-from everett.manager import (
-    ConfigDictEnv,
-    ConfigEnvFileEnv,
-    ConfigManager,
-    ConfigOSEnv,
-    ListOf,
-)
-from everett.ext.inifile import ConfigIniEnv
-
-from corsheaders.defaults import default_headers
-
-config = ConfigManager(
-    [
-        ConfigOSEnv(),
-        ConfigIniEnv(["config.ini", "/etc/test-django-app/server.ini"]),
-        ConfigDictEnv(
-            {
-                "SECRET_KEY": "vo7v#s9o7$t%x=fpbt7j5#%=-bl^y6e4&n2hpklg&rzx%z2mp$",
-                "DEBUG": "false",
-            }
-        ),
-    ]
-)
+import os
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -179,3 +156,11 @@ MEDIA_URL = "/media/"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Africa/Nairobi'
